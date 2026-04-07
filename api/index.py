@@ -27,8 +27,10 @@ if not firebase_admin._apps:
         print(f"Firebase Init Error: {e}")
     # 秘密鍵の改行コード（\n）を正しく処理するようにします
 db = firestore.client() if firebase_admin._apps else None
-
-@app.route("/api/index", methods=['POST'])
+@app.route('/')
+def hello():
+    return "LINE Bot is running!"
+@app.route("/callback", methods=['POST'])
 def callback():
     try:
         body = request.get_json()
